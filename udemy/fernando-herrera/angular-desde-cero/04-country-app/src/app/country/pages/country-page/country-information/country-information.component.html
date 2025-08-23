@@ -1,0 +1,65 @@
+<section class="mx-auto max-w-4xl p-6">
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row items-center gap-6">
+    <img [src]="country().flagSvg" [alt]="country().name" class="w-40 h-28 object-cover shadow rounded-lg" />
+    <div>
+      <h1 class="text-3xl font-bold">{{ country().name }}</h1>
+      <h3 class="text-xl font-light text-gray-500">
+        Población: {{ country().population | number }}
+      </h3>
+      <p class="text-sm text-gray-400">Código: {{ country().cca2 }}</p>
+    </div>
+  </div>
+
+  <!-- Info Cards -->
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card bg-base-200 shadow-md">
+      <div class="card-body">
+        <h2 class="card-title">General</h2>
+        <p><strong>Capital:</strong> {{ country().capital }}</p>
+        <p><strong>Región:</strong> {{ country().region }}</p>
+        <p><strong>Subregión:</strong> {{ country().subregion }}</p>
+        <p><strong>Área:</strong> {{ country().area | number }} km²</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-200 shadow-md">
+      <div class="card-body">
+        <h2 class="card-title">Economía</h2>
+        <p>
+          <strong>Moneda:</strong>
+          @for(currency of country().currencies|keyvalue; track currency.key){
+          {{ currency.value.name }}
+          {{ currency.value.symbol }}
+          }
+        </p>
+        <p>
+          <strong>Lenguajes:</strong>
+          @for(language of country().languages|keyvalue; track language.key){
+          {{ language.value }}
+          }
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Borders -->
+  <div class="mt-8 card bg-base-200 shadow-md">
+    <div class="card-body">
+      <h2 class="card-title">Fronteras</h2>
+      <div class="flex flex-wrap gap-2">
+        @for (border of country().borders; track $index) {
+        <span class="badge badge-outline">
+          {{ border }}
+        </span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="mt-8">
+    <h2 class="text-xl font-semibold mb-2">Mapa</h2>
+    <a class="btn btn-primary btn-sm" [href]="country().maps.googleMaps" target="_blank">View on Google Maps</a>
+  </div>
+</section>

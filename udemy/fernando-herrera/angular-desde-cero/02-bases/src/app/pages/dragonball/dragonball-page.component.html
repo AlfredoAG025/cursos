@@ -1,0 +1,40 @@
+<h1>DragonBall Page</h1>
+
+<hr>
+
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <h3>Agregar: {{ name() }}</h3>
+    <input #txtName [value]="name()" (input)="name.set(txtName.value)" type="text" class="form-control"
+      placeholder="Nombre" />
+
+    <input #txtPower [value]="power()" type="number" (input)="power.set(+txtPower.value)" class="form-control mt-2"
+      placeholder="Poder">
+
+    <button (click)="addCharacter()" class="mt-2 btn btn-primary">
+      Agregar
+    </button>
+  </div>
+
+
+
+  <div class="col-12 col-sm-6">
+    <h3>Listado</h3>
+    <ul>
+      @for (character of characters(); track character.id; let index = $index) {
+      @if (character.power > 500) {
+      <li>
+        <span>{{ index + 1 }} - </span>
+        <span>{{character.name}}</span>
+        <strong [class.text-danger]="character.power > 9000" [class.text-primary]="character.power < 9000">
+          <!-- [ngClass]="powerClasses()" -->
+          ({{ character.power }})
+        </strong>
+      </li>
+      } @else {
+      <li><strong>Aquí no hay nadie</strong></li>
+      }
+      }
+    </ul>
+  </div>
+</section>

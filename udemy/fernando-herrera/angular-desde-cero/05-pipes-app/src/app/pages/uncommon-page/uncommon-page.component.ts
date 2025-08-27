@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CardComponent } from "../../components/navbar/card/card.component";
-import { I18nPluralPipe, I18nSelectPipe } from '@angular/common';
+import { AsyncPipe, I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { interval, map, tap } from 'rxjs';
 
 
 const client1 = {
@@ -18,7 +19,7 @@ const client2 = {
 }
 
 @Component({
-  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe],
+  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe, SlicePipe, JsonPipe, UpperCasePipe, KeyValuePipe, TitleCasePipe, AsyncPipe],
   templateUrl: './uncommon-page.component.html',
 })
 export default class UncommonPageComponent {
@@ -59,4 +60,23 @@ export default class UncommonPageComponent {
   deleteClient() {
     this.clients.update(prev => prev.slice(1));
   }
+
+  profile = {
+    name: 'Freddy',
+    age: 23,
+    address: 'Celaya, Guanajuato',
+  }
+
+  promiseValue: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('Tenemos un error en la data');
+      resolve('Tenemos data en la promesa.');
+      console.log('Promesa finalizada');
+    }, 3500)
+  });
+
+  myObservableTimer = interval(2000).pipe(
+    map(value => value + 1),
+    tap(value => console.log('tap:', value)),
+  );
 }

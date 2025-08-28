@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyAwesomeApp > should match snapshot - screen 1`] = `
+<div
+  data-testid="div-app"
+>
+  <h1
+    data-testid="first-name-title"
+  >
+    Freddy
+  </h1>
+  <h3>
+    Arroyo
+  </h3>
+  <p
+    class="mi-clase-favorita"
+  >
+    Hollow Knight, Metroid
+  </p>
+  <h1>
+    No Activo
+  </h1>
+  <p
+    style="background-color: rgb(186, 186, 186); border-radius: 20px; padding: 10px; margin-top: 30px;"
+  >
+    {"zipCode":"ABC-123","country":"Canada"}
+  </p>
+</div>
+`;
+
+exports[`MyAwesomeApp > should match snapshot 1`] = `
+<div>
+  <div
+    data-testid="div-app"
+  >
+    <h1
+      data-testid="first-name-title"
+    >
+      Freddy
+    </h1>
+    <h3>
+      Arroyo
+    </h3>
+    <p
+      class="mi-clase-favorita"
+    >
+      Hollow Knight, Metroid
+    </p>
+    <h1>
+      No Activo
+    </h1>
+    <p
+      style="background-color: rgb(186, 186, 186); border-radius: 20px; padding: 10px; margin-top: 30px;"
+    >
+      {"zipCode":"ABC-123","country":"Canada"}
+    </p>
+  </div>
+</div>
+`;

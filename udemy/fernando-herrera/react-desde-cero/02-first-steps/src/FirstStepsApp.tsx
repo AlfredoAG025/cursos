@@ -1,4 +1,4 @@
-import { ItemCounter } from "./shopping-cart/itemCounter";
+import { ItemCounter } from "./shopping-cart/ItemCounter";
 
 interface ItemInCart {
     productName: string;

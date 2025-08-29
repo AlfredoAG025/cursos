@@ -1,1 +1,97 @@
-<p>custom-page works!</p>,
+<section class="mx-5">
+  <h1 class="text-2xl font-bold">Pipes Personalizados</h1>
+  <h3 class="text-xl font-thin">Pipes bi incluidos en Angular</h3>
+</section>
+
+<div class="stats shadow">
+  <div class="stat">
+    <div class="stat-title">ToggleCase Pipe</div>
+    <div class="stat-value">{{ name() | toggleCase:upperCase() }}</div>
+    <div class="stat-desc">{{ name() }}</div>
+
+    <button (click)="toggleUppercase()" class="btn btn-primary mt-2">
+      ToggleCase
+    </button>
+  </div>
+</div>
+
+<div class="divider my-2"></div>
+
+<section class="my-2">
+  <h1 class="text-2xl font-bold">Filtrando por: {{ searchQuery() ? searchQuery() : 'Ningúno' }} Ordenando por: {{
+    sortBy() ?? 'Ningúno' }}</h1>
+
+  <div class="flex gap-2 justify-end w-full">
+
+    <input #txtSearch (input)="searchQuery.set(txtSearch.value)" class="input w-full max-w-xs mt-2" type="text"
+      placeholder="Buscar héroe">
+
+    <div class="flex flex-1"></div>
+
+    <button (click)="sortBy.set('name')" class="btn btn-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+        <path fill="currentColor" fill-rule="evenodd"
+          d="M405.334 64v21.333h-42.667v341.333h42.667V448l-42.667-.001V448h-21.333l-.001-.001l-42.666.001v-21.333l42.666-.001V85.333h-42.666V64zm64 64v256H384v-42.667h42.667V170.667H384V128zM320 128v256H42.667V128zm-98.133 25.6H192v145.067c0 13.333-.833 21.666-1.458 29.687l-.082 1.068l-.079 1.067c-.296 4.09-.514 8.207-.514 12.978h29.867v-19.2a42.67 42.67 0 0 0 38.4 21.333a45.65 45.65 0 0 0 36.266-17.067a99.63 99.63 0 0 0 19.2-53.333c0-40.533-21.333-68.267-53.333-68.267a48.43 48.43 0 0 0-38.4 19.2zm-59.733 72.533a54.61 54.61 0 0 0-44.8-17.066a102.2 102.2 0 0 0-49.067 10.666l8.533 21.334a96.2 96.2 0 0 1 36.267-10.667a27.093 27.093 0 0 1 29.867 29.867v2.133H121.6a89.2 89.2 0 0 0-38.4 6.4a35.63 35.63 0 0 0-21.333 36.267a38.187 38.187 0 0 0 42.667 38.4a50.35 50.35 0 0 0 40.533-17.067v14.933H172.8a172.4 172.4 0 0 1-2.133-34.133v-38.4a66.77 66.77 0 0 0-8.533-42.667m-21.334 51.2v25.6a37.12 37.12 0 0 1-29.866 19.2a17.92 17.92 0 0 1-19.2-19.2c0-14.933 10.666-23.466 36.266-25.6zM251.734 230.4c17.066 0 29.866 17.067 29.866 44.8S270.934 320 253.867 320a35.84 35.84 0 0 1-32-21.333v-46.934a40.32 40.32 0 0 1 29.867-21.333" />
+      </svg>
+      Por nombre
+    </button>
+
+    <button (click)="sortBy.set('canFly')" class="btn btn-accent">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M20.56 3.91c.59.59.59 1.54 0 2.12l-3.89 3.89l2.12 9.19l-1.41 1.42l-3.88-7.43L9.6 17l.36 2.47l-1.07 1.06l-1.76-3.18l-3.19-1.77L5 14.5l2.5.37L11.37 11L3.94 7.09l1.42-1.41l9.19 2.12l3.89-3.89c.56-.58 1.56-.58 2.12 0" />
+      </svg>
+      Por volar
+    </button>
+
+    <button (click)="sortBy.set('color')" class="btn btn-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17.5 12a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 17.5 9a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m-3-4A1.5 1.5 0 0 1 13 6.5A1.5 1.5 0 0 1 14.5 5A1.5 1.5 0 0 1 16 6.5A1.5 1.5 0 0 1 14.5 8m-5 0A1.5 1.5 0 0 1 8 6.5A1.5 1.5 0 0 1 9.5 5A1.5 1.5 0 0 1 11 6.5A1.5 1.5 0 0 1 9.5 8m-3 4A1.5 1.5 0 0 1 5 10.5A1.5 1.5 0 0 1 6.5 9A1.5 1.5 0 0 1 8 10.5A1.5 1.5 0 0 1 6.5 12M12 3a9 9 0 0 0-9 9a9 9 0 0 0 9 9a1.5 1.5 0 0 0 1.5-1.5c0-.39-.15-.74-.39-1c-.23-.27-.38-.62-.38-1a1.5 1.5 0 0 1 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8" />
+      </svg>
+      Por color
+    </button>
+
+    <button (click)="sortBy.set('creator')" class="btn btn-neutral">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 7V3H2v18h20V7zM6 19H4v-2h2zm0-4H4v-2h2zm0-4H4V9h2zm0-4H4V5h2zm4 12H8v-2h2zm0-4H8v-2h2zm0-4H8V9h2zm0-4H8V5h2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8zm-2-8h-2v2h2zm0 4h-2v2h2z" />
+      </svg>
+      Por creador
+    </button>
+  </div>
+</section>
+
+<section class="overflow-x-auto w-full">
+  <table class="table table-xs w-full">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Puede volar</th>
+        <th>Color</th>
+        <th>Creador</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (hero of heroes()|heroFilter:searchQuery()|heroSortBy:sortBy(); track hero.id; let index = $index ) {
+      <tr>
+        <th>{{ index + 1 }}</th>
+        <td>{{ hero.name }}</td>
+        <td>
+          <span class="text-xs w-44" [class.text-success]="hero.canFly" [class.text-accent]="!hero.canFly">
+            {{ hero.canFly|canFly }}
+          </span>
+        </td>
+        <td>
+          <span class="text-xs w-44" [style.color]="hero.color|heroTextColor">{{ hero.color|heroColor|titlecase}}</span>
+        </td>
+        <td>
+          <span [class.text-primary]="!hero.creator" [class.text-accent]="hero.creator">
+            {{ hero.creator|heroCreator|titlecase }}</span>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
